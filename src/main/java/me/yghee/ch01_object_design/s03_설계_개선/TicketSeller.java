@@ -1,4 +1,4 @@
-package me.yghee.ch01_object_design;
+package me.yghee.ch01_object_design.s03_설계_개선;
 
 /**
  * 판매원
@@ -7,7 +7,7 @@ package me.yghee.ch01_object_design;
 public class TicketSeller {
     private TicketOffice ticketOffice;
 
-     public TicketSeller(TicketOffice ticketOffice) {
+     public TicketSeller( TicketOffice ticketOffice) {
          this.ticketOffice = ticketOffice;
      }
 

@@ -1,4 +1,4 @@
-package me.yghee.ch01_object_design;
+package me.yghee.ch01_object_design.s03_설계_개선;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,7 +12,7 @@ public class TicketOffice {
     private Long amount; // 판매 금액
     private List<Ticket> tickets = new ArrayList<>(); // 교환해줄 티켓 목록
 
-    public TicketOffice(Long amount, Ticket ... tickets ) {
+    public TicketOffice(Long amount, Ticket... tickets ) {
         this.amount = amount;
         this.tickets.addAll( Arrays.asList(tickets));
     }

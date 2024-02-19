@@ -1,4 +1,4 @@
-package me.yghee.ch01_object_design;
+package me.yghee.ch01_object_design.s03_설계_개선;
 
 /**
  * 관람객. 소지품을 보관하기 위해 가방을 소지할 수 있다.
@@ -6,7 +6,7 @@ package me.yghee.ch01_object_design;
 public class Audience {
     private Bag bag;
 
-    public Audience(Bag bag) {
+    public Audience( Bag bag) {
         this.bag = bag;
     }
 
