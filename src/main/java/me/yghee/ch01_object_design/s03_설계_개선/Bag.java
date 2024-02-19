@@ -24,19 +24,23 @@ public class Bag {
         this.amount = amount;
     }
 
-    /**
-     * 티켓 소유 여부 판단
-     * @return 티켓이 있으면 true, 없으면 false
-     */
-    public boolean hasTicket() {
-        return ticket != null;
+    public Long hold(Ticket ticket) {
+        if ( hasInvitation() ) {
+            setTicket( ticket );
+            return 0L;
+        }
+        else {
+            setTicket( ticket );
+            minusAmount( ticket.getFee() );
+            return ticket.getFee();
+        }
     }
 
     /**
      * 초대장 소유 여부 판단
      * @return 초대장이 있으면 true, 없으면 false
      */
-    public boolean hasInvitation() {
+    private boolean hasInvitation() {
         return invitation != null;
     }
 
@@ -44,7 +48,7 @@ public class Bag {
      * 초대장을 티켓으로 교환
      * @param ticket - 티켓
      */
-    public void setTicket( Ticket ticket) {
+    private void setTicket( Ticket ticket) {
         this.ticket = ticket;
     }
 
@@ -52,7 +56,7 @@ public class Bag {
      * 현금을 감소시킨다.
      * @param amount 감소시킬 현금량
      */
-    public void minusAmount(Long amount) {
+    private void minusAmount(Long amount) {
         this.amount -= amount;
     }
 
