@@ -1,4 +1,4 @@
-package me.yghee.ch02_object_oriented_programming.s02_객체지향_프로그래밍을_향해;
+package me.yghee.ch02_object_oriented_programming.s03_할인_요금_구하기;
 
 import java.time.LocalDateTime;
 
@@ -37,7 +37,7 @@ public class Screening {
      * @param audienceCount 인원 수
      * @return
      */
-    public Reservation reserve(Customer customer, int audienceCount) {
+    public Reservation reserve( Customer customer, int audienceCount) {
         return new Reservation(customer, this, calculateFee(audienceCount), audienceCount);
     }
 
@@ -47,7 +47,7 @@ public class Screening {
      * @param audienceCount
      * @return 총 예매 금액
      */
-    private Money calculateFee(int audienceCount) {
+    private Money calculateFee( int audienceCount) {
         return movie.calculateMovieFee(this).times(audienceCount);
     }
 }
