@@ -48,6 +48,10 @@ public class Screening {
      * @return 총 예매 금액
      */
     private Money calculateFee( int audienceCount) {
-        return movie.calculateMovieFee(this).times(audienceCount);
+        return movie.calculateMovieFee(this).times( ( double ) audienceCount );
+    }
+
+    public Money getMovieFee () {
+        return movie.getFee();
     }
 }

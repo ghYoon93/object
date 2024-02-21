@@ -3,7 +3,7 @@ package me.yghee.ch02_object_oriented_programming.s03_할인_요금_구하기;
 import java.math.BigDecimal;
 
 public class Money {
-    private static final Money ZERO = Money.wons(0);
+    public static final Money ZERO = Money.wons(0L);
 
     private final BigDecimal amount;
 
