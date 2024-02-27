@@ -28,6 +28,9 @@ public class Section05 {
                 )
         );
 
-
+        Movie starWars = new Movie( "스타워즈",
+                Duration.ofMinutes( 210 ),
+                Money.wons( 10000L ),
+                new NoneDiscountPolicy() );
     }
 }
