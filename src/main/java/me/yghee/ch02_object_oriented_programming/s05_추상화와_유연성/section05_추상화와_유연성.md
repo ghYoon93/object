@@ -101,5 +101,40 @@ public class NoneDiscountPolicy implements DiscountPolicy {
 상속 대신 합성을 선호하는 이유가 무엇일까?
 
 ## 상속
+**상속**은 객체지향에서 코드를 재사용하기 위해 널리 사용되는 기법이다.
+두 가지 관점에서 설계에 안 좋은 영향을 미친다. 하나는 상속이 캡슐화를 위반한다는 것이고, 다른 하나는 설계를 유연하지 못하게 만드는 것이다.
+
+**상속의 가장 큰 문제점은 캡슐화를 위반한다는 것이다.**
+상속을 이용하기 위해서는 부모 클래스의 내부 구조를 잘 알고 있어야 한다.
+
+`AmountDiscountMovie`와 `PercentDiscountMovie` 를 구현하는 개발자는 부모 클래스인 `Movie`의 `calculateMovieFee` 메서드 안에서 추상 메서드인 `getDiscountAmount` 메서드를 호출한다는 사실을 알고 있어야한다.
+
+캡슐화의 약화는 자식 클래스가 부모 클래스에 강하게 결합되도록 만든다.
+
+상속의 두 번째 단점은 설계가 유연하지 않다는 것이다. 상속은 부모 클래스와 자식 클래스 사이의 관계를 컴파일 시점에 결정한다. 따라서 실행 시점에 객체의 종류를 변경하는 것이 불가능하다.
+
+실행 시점에 금액 할인 정책인 영화를 비율 할인 정책으로 변경하려면 `AmountDiscountMovie`의 인스턴스를 `PercentDiscountMovie` 로 변경해아한다.
+하지만 대부분의 언어는 이미 생성된 객체의 클래스를 변경하는 기능을 지원하지 않고 그나마 최선으로는 `PercentDiscountMovie`의 인스턴스를 생성한 후 `AmountDiscountMovie`의 상태를 복사하는 것뿐이다.
+
+반면 인스턴스 변수로 연결한 기존 방법을 사용하면 실행 시점에 할인 정책을 간단하게 변경할 수 있다.
+```java
+public class Movie {
+    private DiscountPolicy discountPolicy;
+    
+    public void changeDiscountPolicy(DiscountPolicy discountPolicy) {
+        this.discountPolicy = discountPolicy;
+    }
+}
+```
+
+```java
+Movie avatar = new Movie("아바타",
+        Duration.ofMinutes(120),
+        Money.wons(10000),
+        new AmountDiscountPolicy(Money.wons(800), ...));
+
+avatar.changeDiscountPolicy(new PercentPolicy(0.1, ...));
+```
+`Movie`가 `DiscountPolicy` 의 코드를 재사용하는 이 방법은 너무나도 유용하기 때문에 특별한 이름으로 불린다.
 
 ## 합성
