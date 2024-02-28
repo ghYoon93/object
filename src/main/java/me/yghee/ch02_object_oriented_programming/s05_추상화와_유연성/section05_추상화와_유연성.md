@@ -52,7 +52,47 @@ Movie starWars = new Movie( "스타워즈", Duration.ofMinutes(210),
 추상화가 유연한 설계를 가능하게 하는 이유는 설계가 구체적인 상황에 결합되는 것을 방지하기 때문이다.
 
 **`Movie`는 특정한 할인 정책에 묶이지 않는다. 학인 정책을 구현한 클래스가 `DiscountPolicy`를 상속 받고 있다면 어떤 클래스와도 협력이 가능한다.**
+
 ## 추상 클래스와 인터페이스 트레이드오프
+`NoneDiscountPolicy` 클래스를 만들었지만 `DiscountPolicy`에서 할인 조건이 없을 경우 `getDiscountAmount()` 를 호출하지 않는다.
+그래서 `NoneDiscountPolicy` 의 `getDiscountAmount()` 를 호출할 일이 없다.
+
+`DiscountPolicy` 클래스를 인터페이스로 변경
+```java
+public interface DiscountPolicy {
+    Money calculateDiscountAmount(Screening screening);
+}
+```
+
+기존 `DiscountPolicy`를 `DefaultDiscountPolicy`로 변경하고 인터페이스를 구현하도록 수정
+```java
+public abstract class DefaultDiscountPolicy implements DiscountPolicy {
+  ...
+}
+```
+
+`NoneDiscountPolicy`와 `DiscountPolicy` 의 개념적인 혼란과 결합을 제거하기 위해 `NoneDiscountPolicy`가 `DiscountPolicy` 인터페이스를 구현하도록 변경하자.
+
+```java
+public class NoneDiscountPolicy implements DiscountPolicy {
+    @Override
+    public Money calculateDiscountAmount(Screening screening) {
+        return Money.ZERO;
+    }
+}
+```
+위와 같이 인터페이스를 사용하도록 변경한 설계가 이상적이지만 현실적으로는 `NoneDiscountPolicy`만을 위해 인터페이스를 추가하는 것이 과하다고 느낄 수도 있다.
+
+변경 전의 `NoneDiscountPolicy`도 할인 금액이 0원이라는 사실을 효과적으로 전달한다.
+
+구현과 관련된 모든 것들이 트레이드오프의 대상이 될 수 있다.
+작성하는 모든 코드에서는 합당한 이유가 있어야 한다.
+**트레이드오프를 통해 얻어진 결론과 그렇지 않은 결론 사이의 차이는 크다. 고민하고 또 고민하여 트레이드오프하자.**
+
 ## 코드 재사용
+
+
 ## 상속
+
+
 ## 합성
