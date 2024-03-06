@@ -1,9 +1,9 @@
-package me.yghee.ch02_object_oriented_programming.s02_객체지향_프로그래밍을_향해;
+package me.yghee.ch04_design_quality_and_tradeoffs.s01_데이터_중심의_영화_예매_시스템.code;
 
 import java.math.BigDecimal;
 
 public class Money {
-    private static final Money ZERO = Money.wons(0L);
+    public static final Money ZERO = Money.wons(0L);
 
     private final BigDecimal amount;
 
@@ -15,7 +15,7 @@ public class Money {
         return new Money(BigDecimal.valueOf( amount ));
     }
 
-    Money(BigDecimal amount) {
+    Money ( BigDecimal amount) {
         this.amount = amount;
     }
 
