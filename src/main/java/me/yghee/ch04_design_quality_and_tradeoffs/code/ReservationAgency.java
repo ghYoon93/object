@@ -1,4 +1,4 @@
-package me.yghee.ch04_design_quality_and_tradeoffs.s01_데이터_중심의_영화_예매_시스템.code;
+package me.yghee.ch04_design_quality_and_tradeoffs.code;
 
 /**
  * 데이터 클래스들을 조합해서 영화 예매 절차를 구현하는 클래스

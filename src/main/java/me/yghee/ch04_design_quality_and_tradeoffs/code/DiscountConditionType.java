@@ -1,4 +1,4 @@
-package me.yghee.ch04_design_quality_and_tradeoffs.s01_데이터_중심의_영화_예매_시스템.code;
+package me.yghee.ch04_design_quality_and_tradeoffs.code;
 
 public enum DiscountConditionType {
 
