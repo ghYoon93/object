@@ -10,6 +10,7 @@ public class ReservationAgency {
         //
         boolean discountable = false;
         for ( DiscountCondition condition : movie.getDiscountConditions() ) {
+            // 할인 조건이 추가되면 변경이 발생
             if (condition.getType() == DiscountConditionType.PERIOD ) {
                 discountable = screening.getWhenScreened().getDayOfWeek().equals( condition.getDayOfWeek() ) &&
                         condition.getStartTime().compareTo( screening.getWhenScreened().toLocalTime() ) <= 0 &&
@@ -26,6 +27,7 @@ public class ReservationAgency {
 
         // 적절한 할인 정책에 따라 예매 요금을 계산하는 if 문
         Money fee;
+        // 할인 정책이 추가되면 변경이 발생
         if (discountable) {
             Money discountAmount = Money.ZERO;
             switch ( movie.getMovieType() ) {
