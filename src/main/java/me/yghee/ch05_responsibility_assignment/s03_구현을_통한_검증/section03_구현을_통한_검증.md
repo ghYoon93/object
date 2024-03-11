@@ -26,3 +26,12 @@
 
 - 응집도 높은 메서드로 긴 메서드를 분해하는 방법?
 
+## 타입 분리하기
+- `SequenceCondition`과 `PeriodCondition`이라는 두 개의 클래스로 분리하기
+- 클래스 분리 후 새로운 문제
+  - `Movie`의 인스턴스가 `SequenceCondition`과 `PeriodCondition` 두 개의 서로 다른 클래스의 인스턴스 모두와 협력할 수 있어야 한다.
+  - 해결 방법
+    - SequenceCondition의 목록과 PeriodCondition의 목록을 따로 유지
+    - 문제 1. `Movie` 클래스가 `PeriodCondtion`과 `SequenceCondition` 클래스 양쪽 모두에게 결합된다.
+    - 문제 2. 수정 후에 새로운 할인 조건을 추가하기가 더 어려워졌다.
+  - 변경과 캡슐화라는 관점에서 보면 전체적으로 설계의 품질이 나빠졌다.
