@@ -1,5 +1,7 @@
 package me.yghee.ch02_object_oriented_programming.s02_객체지향_프로그래밍을_향해;
 
+import me.yghee.ch05_responsibility_assignment.code.Customer;
+
 public class Reservation {
     private Customer customer; // 고객
     private Screening screening; // 상영 정보
