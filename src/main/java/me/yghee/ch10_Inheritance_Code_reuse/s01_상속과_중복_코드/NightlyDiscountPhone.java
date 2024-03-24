@@ -13,8 +13,8 @@ public class NightlyDiscountPhone extends Phone {
     private static final int LATE_NIGHT_HOUR = 22;
     private Money nightlyAmount;
 
-    public NightlyDiscountPhone(Money nightlyAmount, Money regularAmount, Duration seconds ) {
-        super( regularAmount, seconds );
+    public NightlyDiscountPhone(Money nightlyAmount, Money regularAmount, Duration seconds, double taxRate ) {
+        super( regularAmount, seconds, taxRate );
         this.nightlyAmount = nightlyAmount;
     }
 
@@ -33,6 +33,6 @@ public class NightlyDiscountPhone extends Phone {
             }
         }
 
-        return result.minus( nightlyFee );
+        return result.minus( nightlyFee.plus( nightlyFee.times( getTaxRate() ) ) );
     }
 }

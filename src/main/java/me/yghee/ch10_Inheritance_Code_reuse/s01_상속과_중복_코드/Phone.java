@@ -7,46 +7,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Phone {
-    private static final int LATE_NIGHT_HOUR = 22;
-    enum PhoneType { REGULAR, NIGHTLY }
 
-    private PhoneType type;
+
     private Money amount;
     private Money regularAmount;
-    private Money nightlyAmount;
     private Duration seconds;
     private List<Call> calls = new ArrayList<>();
+    private double taxRate;
 
-    public Phone ( Money amount, Duration seconds ) {
-        this(PhoneType.REGULAR, amount, Money.ZERO, Money.ZERO, seconds );
-    }
-
-    public Phone(Money nightlyAmount, Money regularAmount, Duration seconds) {
-        this(PhoneType.NIGHTLY, Money.ZERO, nightlyAmount, regularAmount, seconds);
-    }
-
-    public Phone( PhoneType type, Money amount, Money nightlyAmount, Money regularAmount, Duration seconds ) {
-        this.type = type;
-        this.amount = amount;
-        this.regularAmount = regularAmount;
-        this.nightlyAmount = nightlyAmount;
-        this.seconds = seconds;
-    }
+   public Phone( Money amount, Duration seconds, double taxRate ) {
+       this.amount = amount;
+       this.seconds = seconds;
+       this.taxRate = taxRate;
+   }
 
     public Money calculateFee() {
         Money result = Money.ZERO;
         for ( Call call : calls ) {
-            if ( type == PhoneType.REGULAR ) {
-                result = result.plus(
-                        amount.times( ( double ) (call.getDuration().getSeconds() / seconds.getSeconds()) )
-                );
-            }
-            else {
                 regularAmount.times( ( double ) (call.getDuration().getSeconds() / seconds.getSeconds()) );
-            }
         }
 
-        return result;
+        return result.plus( result.times( taxRate ) );
     }
 
     public List<Call> getCalls() {
@@ -59,5 +40,9 @@ public class Phone {
 
     public Duration getSeconds() {
         return seconds;
+    }
+
+    public double getTaxRate() {
+       return taxRate;
     }
 }
