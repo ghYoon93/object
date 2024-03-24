@@ -48,4 +48,16 @@ public class Phone {
 
         return result;
     }
+
+    public List<Call> getCalls() {
+        return calls;
+    }
+
+    public Money getAmount() {
+        return amount;
+    }
+
+    public Duration getSeconds() {
+        return seconds;
+    }
 }
