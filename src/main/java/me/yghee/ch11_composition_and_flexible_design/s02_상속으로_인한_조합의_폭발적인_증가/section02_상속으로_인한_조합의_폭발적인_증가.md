@@ -31,3 +31,11 @@
 - Phone 추상 클래스를 루트로 삼는 기존의 상속 계층 이용
   - 일반 요금제는 RegularPhone
   - 심야 할인 요금제는 NightlyDiscountPhone
+
+# 기본 정책에 세금 조합하기
+- RegularPhone을 상속 받은 TaxRegularPhone 클래스 추가
+- afterCalculated
+  - 부모 클래스와 자식 클래스 사이의 결합도를 느슨하게 만든다.
+  - 자식 클래스가 부모 클래스의 필요한 동작의 명세를 기술하는 추상화에 의존하도록 만든다.
+  - 기본 구현을 제공하는 훅 메서드다.
+  
