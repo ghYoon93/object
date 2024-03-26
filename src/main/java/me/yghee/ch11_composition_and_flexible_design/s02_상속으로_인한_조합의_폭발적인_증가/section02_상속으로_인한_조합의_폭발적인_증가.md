@@ -38,4 +38,7 @@
   - 부모 클래스와 자식 클래스 사이의 결합도를 느슨하게 만든다.
   - 자식 클래스가 부모 클래스의 필요한 동작의 명세를 기술하는 추상화에 의존하도록 만든다.
   - 기본 구현을 제공하는 훅 메서드다.
-  
+
+# 기본 정책에 기본 요금 할인 정책 조합하기
+- RegularPhone을 상속 받는 RateDiscountableRegularPhone 추가
+- RateDiscountableRegularPhone과 RateDiscountableNightlyDiscountPhone 클래스 사이에 중복 코드 발생
