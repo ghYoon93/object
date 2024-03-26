@@ -42,3 +42,8 @@
 # 기본 정책에 기본 요금 할인 정책 조합하기
 - RegularPhone을 상속 받는 RateDiscountableRegularPhone 추가
 - RateDiscountableRegularPhone과 RateDiscountableNightlyDiscountPhone 클래스 사이에 중복 코드 발생
+
+# 중복 코드의 덫에 걸리다
+- 상속의 남용으로 하나의 기능을 추가하기 위해 필요 이상으로 많은 수의 클래스를 추가해야 하는 경우 발생
+  - 클래스 폭발 또는 조합의 폭발 문제라고도 부른다.
+- 새로운 기능을 추가할 때 마다 클래스가 추가되는 문제가 있으며 기능을 수정 시 여러 클래스 안에 중복돼서 누락의 문제도 있다.
